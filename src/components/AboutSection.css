@@ -1,0 +1,178 @@
+/* --- SECTION STYLING --- */
+.about-section {
+  background-color: #0a0a0a; /* Flow: Same as Trifecta */
+  padding: 6rem 2rem;
+  color: #e5e7eb;
+  overflow: hidden;
+}
+
+/* --- NEW: Section Header Styling (Copied from Trifecta) --- */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #60a5fa; /* Accent color */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 0.5rem;
+}
+
+
+/* --- 2-COLUMN GRID LAYOUT --- */
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+/* --- 1. IMAGE WRAPPER (Trifecta Style) --- */
+.about-image-wrapper {
+  position: relative;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.4s ease, transform 0.4s ease, border-color 0.4s ease;
+
+  /* --- !! REQUESTED CHANGE !! --- */
+  border-style: dashed; 
+}
+
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.about-image-wrapper:hover {
+  transform: translateY(-8px);
+  border-color: rgba(96, 165, 250, 0.7);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(96, 165, 250, 0.2);
+}
+
+.about-image-wrapper:hover .about-image {
+  transform: scale(1.1);
+}
+
+/* --- 2. CONTENT WRAPPER --- */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* --- REMOVED: .about-subtitle and .about-title styles --- */
+/* (They are now .section-subtitle and .section-title) */
+
+.about-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #e5e7eb; /* Light text */
+}
+
+/* --- STATS SECTION --- */
+.about-stats-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.stat-card {
+  background-color: #111827;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-icon {
+  color: #60a5fa;
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.875rem;
+  color: #e5e7eb;
+}
+
+/* --- Button Style --- */
+.btn-about {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  background: #fff;
+  color: #111827;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+  align-self: flex-start;
+}
+
+.btn-about:hover {
+  background: #e5e7eb;
+}
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 900px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .about-image-wrapper {
+    height: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-section {
+    padding: 4rem 1.5rem;
+  }
+  .about-stats-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .about-image-wrapper {
+    height: 300px;
+  }
+  .about-description {
+    font-size: 1rem;
+  }
+  .btn-about {
+    align-self: stretch;
+    text-align: center;
+  }
+  /* --- NEW: Responsive heading --- */
+  .section-title {
+    font-size: 2rem;
+  }
+}

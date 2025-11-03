@@ -1,0 +1,221 @@
+
+.future-ride-section {
+  padding: 6rem 2rem;
+  width: 100%;
+  background-color: #0a0a0a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* --- सेक्शन हेडर (Trifecta.css से कॉपी) --- */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  width: 100%;
+  max-width: 1300px;
+}
+.section-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #60a5fa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 0.5rem;
+}
+
+/* --- 2. मुख्य फ्यूचर कंटेनर --- */
+.future-ride-container {
+  width: 100%;
+  max-width: 1100px;
+  background: #111;
+  border: 1px dashed rgba(96, 165, 250, 0.5); /* ब्लूप्रिंट फील */
+  border-radius: 12px;
+  padding: 3rem;
+  box-sizing: border-box;
+}
+.future-header {
+  text-align: center;
+  border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+.future-ride-title {
+  font-size: 2.75rem;
+  color: #fff;
+}
+.future-ride-subtitle {
+  font-size: 1.25rem;
+  color: #60a5fa;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+/* --- 3. काउंटडाउन टाइमर --- */
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.time-box {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  min-width: 100px;
+}
+.time-box span {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  display: block;
+}
+.time-box {
+  font-size: 0.9rem;
+  color: #aaa;
+  text-transform: uppercase;
+}
+.countdown-loading {
+  text-align: center;
+  color: #aaa;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.future-ride-description {
+  font-size: 1.1rem;
+  color: #e5e7eb;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+}
+
+/* --- 4. ब्लूप्रिंट ग्रिड --- */
+.blueprint-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* मैप बड़ा, बाकी छोटे */
+  gap: 2rem;
+}
+.blueprint-panel {
+  background: #18181b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #60a5fa;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+  padding-bottom: 1rem;
+}
+.panel-header h3 {
+  font-size: 1.25rem;
+  color: #fff;
+}
+.route-map-img {
+  width: 100%;
+  border-radius: 6px;
+  opacity: 0.9;
+}
+.blueprint-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+.blueprint-list li {
+  color: #e5e7eb;
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.blueprint-list li:first-child {
+  padding-top: 0;
+}
+.blueprint-list li:last-child {
+  border-bottom: none;
+}
+
+/* --- 5. बकेट लिस्ट --- */
+.bucket-list-container {
+  width: 100%;
+  max-width: 1100px;
+  background: #111;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 3rem;
+  box-sizing: border-box;
+}
+.bucket-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.bucket-list li {
+  color: #aaa;
+  font-size: 1rem;
+  background: #18181b;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: color 0.3s, border-color 0.3s;
+}
+.bucket-list li:hover {
+  color: #fff;
+  border-color: #60a5fa;
+}
+
+/* --- 6. रिस्पॉन्सिव डिज़ाइन --- */
+@media (max-width: 1024px) {
+  .blueprint-grid {
+    grid-template-columns: 1fr; /* 1 कॉलम में स्टैक करें */
+  }
+}
+@media (max-width: 768px) {
+  .future-ride-container {
+    padding: 2rem;
+  }
+  .future-ride-title {
+    font-size: 2rem;
+  }
+  .bucket-list {
+    grid-template-columns: 1fr;
+  }
+  .countdown-timer {
+    gap: 0.5rem;
+  }
+  .time-box {
+    min-width: 70px;
+    padding: 0.75rem;
+  }
+  .time-box span {
+    font-size: 1.75rem;
+  }
+}
+@media (max-width: 640px) {
+  .future-ride-section {
+    padding: 4rem 1rem;
+  }
+  .future-ride-container {
+    padding: 1.5rem;
+    border-style: solid; /* मोबाइल पर डैश बहुत बिजी लगता है */
+  }
+}

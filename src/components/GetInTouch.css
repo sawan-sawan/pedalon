@@ -1,0 +1,108 @@
+/* --- SECTION STYLING --- */
+.cta-section {
+  background-color: #0a0a0a; /* Flow: Same dark BG */
+  padding: 6rem 2rem;
+  overflow: hidden;
+}
+
+/* --- THE CTA CARD --- */
+.cta-container {
+  /* Flow: Using the stat/ride card BG */
+  background-color: #111827; 
+  /* Flow: Using the glowing border */
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  
+  border-radius: 12px;
+  max-width: 1200px; /* एक आरामदायक चौड़ाई */
+  margin: 0 auto;
+  padding: 3rem;
+  text-align: center;
+  
+  /* थोड़ा सा "glow" इफ़ेक्ट */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(96, 165, 250, 0.1);
+}
+
+/* --- Header Styles (Flow) --- */
+.section-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #60a5fa; /* Flow: Accent color */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #e5e7eb;
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto; /* सेंटर में रखने के लिए */
+}
+
+/* --- Social Icons --- */
+.cta-social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem; /* आइकन्स के बीच स्पेस */
+  margin-bottom: 2.5rem;
+}
+
+.cta-social-link {
+  font-size: 2.5rem; /* बड़े आइकन्स */
+  color: #e5e7eb;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-social-link:hover {
+  color: #60a5fa; /* Flow: Accent color on hover */
+  transform: scale(1.1) translateY(-3px);
+}
+
+/* --- Primary Button --- */
+.btn-cta-primary {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  /* Flow: Using the primary gradient button from Hero/Rides */
+  background: linear-gradient(90deg, #2563EB, #1E40AF);
+  color: #fff;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn-cta-primary:hover {
+  background: linear-gradient(90deg, #1D4ED8, #1E3A8A);
+  transform: translateY(-3px);
+}
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 640px) {
+  .cta-section {
+    padding: 4rem 1.5rem;
+  }
+  .cta-container {
+    padding: 2rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .cta-description {
+    font-size: 1rem;
+  }
+  .cta-social-links {
+    gap: 1.5rem;
+  }
+  .cta-social-link {
+    font-size: 2rem;
+  }
+}

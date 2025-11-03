@@ -1,0 +1,210 @@
+/* --- SECTION STYLING --- */
+.trifecta-section {
+  padding: 6rem 2rem;
+  width: 100%;
+  background-color: #0a0a0a; /* प्रीमियम डार्क चारकोल */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* हॉरिजॉन्टल सेंटरिंग के लिए */
+  box-sizing: border-box; /* पैडिंग को सही से हैंडल करने के लिए */
+}
+
+/* --- Section Header Styling --- */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  width: 100%;
+  max-width: 1300px; /* यह trifecta-container से मैच करेगा */
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #60a5fa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 0.5rem;
+}
+
+/* --- THE RESPONSIVE GRID (REVISED) --- */
+.trifecta-container {
+  display: grid;
+  /* --- CHANGED: Explicit Columns --- */
+  grid-template-columns: repeat(3, 1fr); /* डेस्कटॉप पर 3 कॉलम */
+  gap: 2rem;
+  width: 100%; /* कंटेनर को पूरी चौड़ाई दें */
+  max-width: 1300px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+/* --- MODERN CARD STYLING --- */
+.trifecta-card {
+  position: relative;
+  height: 450px;
+  border-radius: 12px;
+  overflow: hidden;
+  color: #fff;
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.trifecta-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(96, 165, 250, 0.7);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(96, 165, 250, 0.2);
+}
+
+/* --- CARD BACKGROUND --- */
+.card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.trifecta-card:hover .card-bg {
+  transform: scale(1.1);
+}
+
+/* --- CARD CONTENT (The "Glass" part) --- */
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  z-index: 2;
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateY(calc(100% - 100px));
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.trifecta-card:hover .card-content {
+  transform: translateY(0);
+}
+
+/* --- Icon Style --- */
+.card-icon {
+  margin-bottom: 0.5rem;
+  color: #60a5fa;
+  opacity: 1;
+}
+
+/* --- Text Styles --- */
+.card-subtitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #60a5fa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card-title {
+  font-size: 2rem;
+  margin: 0.25rem 0;
+  line-height: 1.2;
+}
+
+.card-description,
+.btn-trifecta {
+  opacity: 1; 
+  margin-top: 0.75rem;
+}
+
+.card-description {
+  font-size: 0.95rem;
+  color: #e5e7eb;
+  line-height: 1.5;
+}
+
+.btn-trifecta {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: #fff;
+  color: #111827;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+}
+
+.btn-trifecta:hover {
+  background: #e5e7eb;
+}
+
+/* --- "LIVE" BADGE --- */
+.live-badge {
+  /* ... (no change needed) ... */
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 3;
+  background: #e11d48;
+  color: #fff;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  animation: pulse-live 1.5s infinite;
+}
+
+@keyframes pulse-live {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.7); }
+  50% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(225, 29, 72, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+}
+
+/* --- "BLUEPRINT" style for FUTURE card --- */
+.future-card {
+  border-style: dashed;
+}
+
+/* --- ================================== --- */
+/* --- NEW: RESPONSIVE ADJUSTMENTS --- */
+/* --- ================================== --- */
+
+/* 1. टैबलेट (Tablets) - 2 कॉलम */
+@media (max-width: 1024px) {
+  .trifecta-section {
+    min-height: auto; /* 100vh को हटा दें */
+    padding: 4rem 1.5rem;
+  }
+  .trifecta-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 कॉलम */
+  }
+}
+
+/* 2. मोबाइल (Mobile) - 1 कॉलम */
+@media (max-width: 640px) {
+  .trifecta-section {
+    padding: 4rem 1rem; /* पैडिंग और कम करें */
+  }
+  .trifecta-container {
+    grid-template-columns: 1fr; /* 1 कॉलम में स्टैक करें */
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .card-title {
+    font-size: 1.75rem;
+  }
+  .trifecta-card {
+    height: 420px; /* मोबाइल पर ऊंचाई थोड़ी कम कर सकते हैं */
+  }
+}

@@ -1,0 +1,117 @@
+/* --- SECTION STYLING --- */
+.footer-section {
+  /* Flow: Using the darker card color as the BG */
+  background-color: #111827;
+  color: #e5e7eb;
+  padding: 4rem 2rem 2rem 2rem;
+  
+  /* Flow: A subtle top border to separate from CTA */
+  border-top: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* --- Top Part (Logo, Links, Social) --- */
+.footer-top {
+  display: grid;
+  /* Flow: Responsive grid */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+/* --- Column 1: Brand --- */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo {
+  /* Flow: Matching Navbar logo */
+  font-size: 1.5 rem;
+  font-weight: 800;
+  font-family: "BBH Sans Bartle", sans-serif;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+
+.footer-tagline {
+  font-size: 0.95rem;
+  color: #e5e7eb;
+  line-height: 1.6;
+}
+
+/* --- Column 2: Links --- */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-link {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #60a5fa; /* Flow: Accent color */
+}
+
+/* --- Column 3: Social --- */
+.footer-social-icons {
+  display: flex;
+  gap: 1.5rem; /* Icons के बीच स्पेस */
+}
+
+.footer-social-icon {
+  font-size: 1.75rem; /* थोड़े छोटे आइकन्स */
+  color: #e5e7eb;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social-icon:hover {
+  color: #60a5fa; /* Flow: Accent color */
+  transform: scale(1.1);
+}
+
+/* --- Bottom Part (Copyright) --- */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 640px) {
+  .footer-section {
+    padding: 3rem 1.5rem 1.5rem 1.5rem;
+  }
+  .footer-top {
+    gap: 2.5rem; /* मोबाइल पर ज़्यादा स्पेस */
+  }
+  .footer-brand,
+  .footer-links,
+  .footer-social {
+    text-align: center; /* सब कुछ सेंटर में */
+  }
+  .footer-social-icons {
+    justify-content: center;
+  }
+}

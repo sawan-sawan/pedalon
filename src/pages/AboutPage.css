@@ -1,0 +1,193 @@
+.about-page-section {
+  background-color: #0a0a0a;
+  padding: 6rem 2rem;
+  color: #e5e7eb;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.about-page-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* --- (सेक्शन हेडर स्टाइल आपके Trifecta/About से कॉपी) --- */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.section-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #60a5fa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 0.5rem;
+}
+
+/* --- 2. इंट्रो टेक्स्ट --- */
+.about-intro-text {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #e5e7eb;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+}
+
+/* --- 3. "Two Passions" ग्रिड --- */
+.passions-header {
+  font-size: 1.75rem;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-weight: 600;
+}
+
+.about-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.passion-card {
+  background: #111;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.passion-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.passion-icon {
+  font-size: 1.5rem;
+  color: #60a5fa;
+}
+
+.passion-card h3 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0;
+}
+
+.passion-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #e5e7eb;
+  flex-grow: 1; /* यह टेक्स्ट को जगह भरने देता है */
+}
+
+/* --- 4. Stats/Skills --- */
+.passion-stats {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+.passion-stats .stat {
+  background: rgba(96, 165, 250, 0.1);
+  color: #60a5fa;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.passion-stats .stat svg {
+  font-size: 0.8rem;
+}
+
+/* --- 5. Social Links --- */
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto; /* यह लिंक्स को कार्ड में नीचे चिपका देगा */
+}
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.social-link.strava {
+  background: #fc4c02;
+  color: #fff;
+}
+.social-link.strava:hover {
+  background: #fff;
+  color: #fc4c02;
+}
+.social-link.github {
+  background: #333;
+  color: #fff;
+}
+.social-link.github:hover {
+  background: #fff;
+  color: #333;
+}
+.social-link.linkedin {
+  background: #0077b5;
+  color: #fff;
+}
+.social-link.linkedin:hover {
+  background: #fff;
+  color: #0077b5;
+}
+
+/* --- 6. Philosophy सेक्शन --- */
+.philosophy-section {
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+.philosophy-section h3 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.philosophy-section p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #e5e7eb;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* --- 7. रिस्पॉन्सिव --- */
+@media (max-width: 900px) {
+  .about-grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .about-page-section {
+    padding: 4rem 1rem;
+  }
+  .passions-header {
+    font-size: 1.5rem;
+  }
+}

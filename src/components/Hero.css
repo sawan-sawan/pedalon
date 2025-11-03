@@ -1,0 +1,251 @@
+/* --- No Change --- */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.slider-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* --- UPGRADE: Smoother Transitions --- */
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.1);
+  /* Start slightly zoomed in */
+  /* Slower, more cinematic transition */
+  transition: opacity 1.5s ease-in-out, transform 8s ease-out;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: scale(1);
+  /* Slowly zoom out over 8s */
+}
+
+/* --- UPGRADE: Better Overlay --- 
+  Instead of a flat dark color, a gradient.
+  This is darker at the bottom (for text readability)
+  and lighter at the top (to show off your photos).
+*/
+/* अपनी Hero.css फ़ाइल में इसे ढूँढें */
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 0%,   
+    rgba(0, 0, 0, 0.7) 60%, 
+    #0a0a0a 95%              
+  );
+  
+  z-index: 1;
+}
+
+/* --- UPGRADE: A Bit More Drama --- */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 2rem;
+  /* Animation is the same, but 'key' prop re-triggers it */
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+    /* Start a bit lower */
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-weight: 600;
+  color: #60a5fa;
+  /* This blue is great! */
+}
+
+.hero-title {
+  font-family: "Unbounded", sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0.5rem 0;
+  line-height: 1.2;
+}
+
+.hero-description {
+  font-size: 1.125rem;
+  color: #e5e7eb;
+  margin: 1.5rem 0;
+  max-width: 550px;
+  /* Constrain line length for readability */
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* --- All your button styles (no change) --- */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #2563EB, #1E40AF);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #1D4ED8, #1E3A8A);
+  transform: translateY(-3px);
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 99, 235, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+  }
+}
+
+/* --- NEW: CSS for Dots --- */
+.hero-pagination {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 3;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.dot.active {
+  background: #fff;
+  transform: scale(1.1);
+}
+
+/* --- Responsive (No change) --- */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.4rem;
+    font-size: 0.95rem;
+  }
+
+  .hero-pagination {
+    bottom: 20px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* ... (Keep all styles from .hero-section to .hero-overlay) ... */
+
+/* --- MODIFICATION HERE --- */
+
+/* 1. This animation now runs ONCE on page load for the whole block */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 2rem;
+  /* This animation will NOT re-run on slide change */
+  animation: fadeInUp 1s ease-out;
+}
+
+/* This is the original page-load animation (No Change) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 2. NEW animation for the text wrapper */
+/* This will run EVERY time the slide changes, but it's just a fade */
+.hero-text-wrapper {
+  animation: simpleFade 1s ease-out;
+}
+
+/* 3. NEW keyframes for the simple fade */
+@keyframes simpleFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ... (Keep all other styles from .hero-subtitle to @media) ... */

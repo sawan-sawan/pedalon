@@ -1,0 +1,278 @@
+/* --- PastRides.css --- */
+
+/* --- 1. मेन सेक्शन --- */
+.past-rides-section {
+  padding: 6rem 2rem;
+  width: 100%;
+  background-color: #0a0a0a; /* प्रीमियम डार्क चारकोल */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* --- 2. सेक्शन हेडर (Trifecta.css से कॉपी किया गया) --- */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  width: 100%;
+  max-width: 1300px;
+}
+.section-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #60a5fa; /* ब्लू एक्सेंट */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 0.5rem;
+}
+
+/* --- 3. फ़िल्टर बार --- */
+.filter-bar {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap; /* मोबाइल पर रैप होगा */
+  justify-content: center;
+}
+.filter-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e5e7eb;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  font-weight: 500;
+}
+.filter-btn:hover,
+.filter-btn.active {
+  background: #60a5fa;
+  color: #0a0a0a;
+  border-color: #60a5fa;
+}
+
+/* --- 4. राइड्स का ग्रिड --- */
+.rides-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* डेस्कटॉप पर 3 कॉलम */
+  gap: 2rem;
+  width: 100%;
+  max-width: 1300px;
+}
+
+/* --- 5. राइड कार्ड --- */
+.ride-card {
+  background: #111; /* डार्क बैकग्राउंड */
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.ride-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(96, 165, 250, 0.15);
+}
+.ride-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+.ride-card-content {
+  padding: 1.25rem;
+}
+.ride-card-date {
+  font-size: 0.8rem;
+  color: #60a5fa;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.ride-card-title {
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0.25rem 0 0.75rem;
+  line-height: 1.3;
+}
+.ride-card-stats {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+  align-items: center;
+}
+.ride-card-stats svg {
+  margin-right: 0.25rem;
+  color: #60a5fa;
+  flex-shrink: 0; /* आइकन को सिकुड़ने से रोकें */
+}
+
+/* --- 6. "Load More" बटन (Trifecta.css से कॉपी) --- */
+.load-more-container {
+  margin-top: 3rem;
+  text-align: center;
+}
+.btn-trifecta {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: #fff;
+  color: #111827;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.btn-trifecta:hover {
+  background: #e5e7eb;
+}
+
+/* --- 7. Modal (पॉप-अप) --- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.7); /* हल्का डार्क */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  animation: modal-fade-in 0.3s ease;
+}
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background: #18181b; /* थोड़ा हल्का डार्क */
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  /* एनीमेशन */
+  transform: scale(0.95);
+  opacity: 0;
+  animation: modal-scale-in 0.3s 0.1s forwards;
+}
+@keyframes modal-scale-in {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transition: background 0.2s;
+}
+.modal-close-btn:hover {
+  background: #e11d48; /* आपके "LIVE" बैज जैसा */
+}
+.modal-cover-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+}
+.modal-header {
+  padding: 1.5rem 2rem 0;
+}
+.modal-title {
+  font-size: 2.5rem;
+  color: #fff;
+}
+.modal-date {
+  color: #60a5fa;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.modal-date svg {
+  margin-right: 0.5rem;
+}
+.modal-stats {
+  display: flex;
+  gap: 2rem;
+  padding: 1.5rem 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  margin: 1.5rem 0;
+}
+.modal-stats span {
+  color: #fff;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.modal-stats span strong {
+  font-size: 1.5rem;
+  color: #60a5fa;
+}
+.modal-body {
+  padding: 0 2rem 2rem;
+  color: #e5e7eb;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* --- 8. रिस्पांसिव डिज़ाइन --- */
+@media (max-width: 1024px) {
+  .rides-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .past-rides-section {
+    padding: 4rem 1rem;
+  }
+  .rides-grid-container {
+    grid-template-columns: 1fr;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .modal-content {
+    max-height: 95vh;
+  }
+  .modal-title {
+    font-size: 1.75rem;
+  }
+  .modal-header,
+  .modal-stats,
+  .modal-body {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .modal-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
