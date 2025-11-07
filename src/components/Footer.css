@@ -1,11 +1,9 @@
 /* --- SECTION STYLING --- */
 .footer-section {
-  /* Flow: Using the darker card color as the BG */
   background-color: #111827;
   color: #e5e7eb;
-  padding: 4rem 2rem 2rem 2rem;
-  
-  /* Flow: A subtle top border to separate from CTA */
+  /* (CHANGED) Padding kam rakhi hai height ke liye */
+  padding: 3rem 2rem 2rem 2rem;
   border-top: 1px solid rgba(96, 165, 250, 0.3);
 }
 
@@ -17,10 +15,12 @@
 /* --- Top Part (Logo, Links, Social) --- */
 .footer-top {
   display: grid;
-  /* Flow: Responsive grid */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* (CHANGED) minmax ko 250px se 220px kiya
+     taaki 4 columns aasani se fit ho sakein */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
-  margin-bottom: 2.5rem;
+  /* (CHANGED) Bottom margin kam kar di */
+  margin-bottom: 2rem;
 }
 
 .footer-heading {
@@ -39,8 +39,7 @@
 }
 
 .footer-logo {
-  /* Flow: Matching Navbar logo */
-  font-size: 1.5 rem;
+  font-size: 1.5rem;
   font-weight: 800;
   font-family: "BBH Sans Bartle", sans-serif;
   color: #fff;
@@ -50,11 +49,13 @@
 
 .footer-tagline {
   font-size: 0.95rem;
-  color: #e5e7eb;
+  /* (CHANGED) Tagline ka color halka kiya */
+  color: #9ca3af;
   line-height: 1.6;
+  max-width: 250px; /* NEW: Taaki yeh zyada jagah na le */
 }
 
-/* --- Column 2: Links --- */
+/* --- Column 2 & 3: Links --- */
 .footer-links {
   display: flex;
   flex-direction: column;
@@ -64,7 +65,8 @@
   color: #e5e7eb;
   text-decoration: none;
   font-size: 1rem;
-  padding: 0.5rem 0;
+  /* (CHANGED) Links ke beech ka space kam kiya */
+  padding: 0.4rem 0;
   transition: color 0.3s ease;
 }
 
@@ -72,14 +74,14 @@
   color: #60a5fa; /* Flow: Accent color */
 }
 
-/* --- Column 3: Social --- */
+/* --- Column 4: Social --- */
 .footer-social-icons {
   display: flex;
-  gap: 1.5rem; /* Icons के बीच स्पेस */
+  gap: 1.5rem;
 }
 
 .footer-social-icon {
-  font-size: 1.75rem; /* थोड़े छोटे आइकन्स */
+  font-size: 1.75rem; 
   color: #e5e7eb;
   transition: color 0.3s ease, transform 0.3s ease;
 }
@@ -92,7 +94,8 @@
 /* --- Bottom Part (Copyright) --- */
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 2rem;
+  /* (CHANGED) Top padding kam ki */
+  padding-top: 1.5rem;
   text-align: center;
   font-size: 0.9rem;
   color: #e5e7eb;
@@ -101,15 +104,20 @@
 /* --- RESPONSIVENESS --- */
 @media (max-width: 640px) {
   .footer-section {
-    padding: 3rem 1.5rem 1.5rem 1.5rem;
+    padding: 2.5rem 1.5rem 1.5rem 1.5rem;
   }
   .footer-top {
-    gap: 2.5rem; /* मोबाइल पर ज़्यादा स्पेस */
+    gap: 2.5rem; 
   }
   .footer-brand,
   .footer-links,
   .footer-social {
-    text-align: center; /* सब कुछ सेंटर में */
+    text-align: center; 
+  }
+  /* NEW: Tagline ko center karne ke liye */
+  .footer-tagline {
+    margin-left: auto;
+    margin-right: auto;
   }
   .footer-social-icons {
     justify-content: center;

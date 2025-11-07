@@ -31,7 +31,7 @@ const rides = [
 
 const FeaturedRides = () => {
   return (
-    <section className="rides-section">
+    <section id="featured-rides" className="rides-section">
       
       {/* Flow: Same section header style */}
       <div className="section-header">
