@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-// --- 1. 'useLocation' को यहाँ इम्पोर्ट किया गया ---
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom'; // <-- useNavigate add kiya
 import './Navbar.css';
 
 // --- सभी Icon कॉम्पोनेंट्स (इनमें कोई बदलाव नहीं) ---
@@ -48,15 +47,15 @@ const ContactIcon = ({ className }) => (
     </svg>
 );
 // --- (आइकन का कोड समाप्त) ---
+// (Baaki icons aur sab kuch same rahega...)
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [openDropdown, setOpenDropdown] = useState(null);
     const [isScrolled, setIsScrolled] = useState(false);
     const navRef = useRef(null);
-    
-    // --- 2. 'location' को जोड़ा गया ---
     const location = useLocation();
+    const navigate = useNavigate(); // <-- Add kiya
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -71,22 +70,43 @@ const Navbar = () => {
         setOpenDropdown(null);
     };
 
-    // --- 3. स्मूथ स्क्रॉल के लिए फंक्शन ---
     const handleContactScroll = (e) => {
-        e.preventDefault(); // तुरंत जंप करने से रोकें
-        
-        // ID 'contact' वाले एलिमेंट को ढूँढें
+        e.preventDefault();
         const targetElement = document.getElementById('contact');
         if (targetElement) {
             targetElement.scrollIntoView({ behavior: 'smooth' });
         }
     };
 
-    // --- 4. मोबाइल के लिए स्क्रॉल फंक्शन (जो मेन्यू भी बंद करता है) ---
     const handleMobileContactScroll = (e) => {
-        handleContactScroll(e); // पहले स्क्रॉल करें
-        handleMobileLinkClick(); // फिर मेन्यू को बंद करें
+        handleContactScroll(e);
+        handleMobileLinkClick();
     };
+
+    // --- ⭐ NEW FUNCTION: Blog/Stories scroll to FeaturedRides ---
+    const handleBlogScroll = (e) => {
+        e.preventDefault();
+
+        if (location.pathname !== '/') {
+            // Agar home page par nahi ho to pehle navigate karo
+            navigate('/');
+            // Navigation hone ke baad thoda delay dekar scroll karo
+            setTimeout(() => {
+                const target = document.getElementById('FeaturedRides');
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            }, 600);
+        } else {
+            // Agar home page par ho to direct scroll karo
+            const target = document.getElementById('FeaturedRides');
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    const handleMobileBlogScroll = (e) => {
+        handleBlogScroll(e);
+        handleMobileLinkClick();
+    };
+    // --- ⭐ END ---
 
     useEffect(() => {
         const handleScroll = () => {
@@ -110,7 +130,6 @@ const Navbar = () => {
         };
     }, [navRef]);
 
-    // --- 5. "Contact" को 'navLinks' से हटा दिया गया है ---
     const navLinks = [
         { name: "Home", href: "/", icon: <HomeIcon className="mobile-nav-icon" /> },
         {
@@ -128,7 +147,6 @@ const Navbar = () => {
             href: "/about",
             icon: <UserIcon className="mobile-nav-icon" />,
         },
-        // { name: "Contact", href: "/contact", icon: <ContactIcon ... /> }, // <-- यहाँ से हटाया गया
     ];
 
     return (
@@ -169,23 +187,22 @@ const Navbar = () => {
                             )
                         )}
 
-                        {/* --- 6. यहाँ नया लॉजिक जोड़ा गया --- */}
                         {location.pathname === '/' ? (
-                            // अगर होमपेज पर हैं, तो स्क्रॉल करें
                             <a href="#contact" onClick={handleContactScroll} className="nav-link">
                                 Contact
                             </a>
                         ) : (
-                            // अगर किसी और पेज पर हैं, तो /contact पर जाएँ
                             <Link to="/contact" className="nav-link">
                                 Contact
                             </Link>
                         )}
-                        
-                        <Link to="/blog" className="btn btn-primary">Blog / Stories</Link>
+
+                        {/* ⭐ Blog/Stories Button Scroll Functionality */}
+                        <a href="#FeaturedRides" className="btn btn-primary" onClick={handleBlogScroll}>
+                            Blog / Stories
+                        </a>
                     </div>
 
-                    {/* Mobile Menu Button */}
                     <div className="navbar-mobile-toggle">
                         <button onClick={toggleMobileMenu} className="menu-toggle-btn">
                             <MenuIcon />
@@ -252,9 +269,7 @@ const Navbar = () => {
                             )
                         )}
 
-                        {/* --- 7. यहाँ मोबाइल के लिए नया लॉजिक जोड़ा गया --- */}
                         {location.pathname === '/' ? (
-                            // अगर होमपेज पर हैं, तो स्क्रॉल करें
                             <a href="#contact" className="nav-link-mobile" onClick={handleMobileContactScroll}>
                                 <span className="mobile-link-content">
                                     <ContactIcon className="mobile-nav-icon" />
@@ -262,7 +277,6 @@ const Navbar = () => {
                                 </span>
                             </a>
                         ) : (
-                            // अगर किसी और पेज पर हैं, तो /contact पर जाएँ
                             <Link to="/contact" className="nav-link-mobile" onClick={handleMobileLinkClick}>
                                 <span className="mobile-link-content">
                                     <ContactIcon className="mobile-nav-icon" />
@@ -273,13 +287,14 @@ const Navbar = () => {
                     </nav>
 
                     <div className="mobile-menu-footer">
-                        <Link
-                            to="/blog"
+                        {/* ⭐ Mobile Blog Scroll Button */}
+                        <a
+                            href="#FeaturedRides"
                             className="btn btn-primary btn-mobile"
-                            onClick={handleMobileLinkClick}
+                            onClick={handleMobileBlogScroll}
                         >
                             Blog / Stories
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>

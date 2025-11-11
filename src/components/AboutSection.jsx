@@ -16,7 +16,7 @@ const AboutSection = () => {
         {/* --- LEFT COLUMN: IMAGE --- */}
         <div className="about-image-wrapper">
           <img
-            src="/img/img5.jpg"
+            src="/img/img10.jpg"
             alt="The Rider - Pedalon"
             className="about-image"
           />
@@ -63,3 +63,15 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
+
+
+
+
+
+
+
+
+
+
+
+

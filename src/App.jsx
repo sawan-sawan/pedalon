@@ -16,6 +16,7 @@ import PastRides from "./pages/PastRides.jsx";
 import PresentRides from "./pages/PresentRides.jsx";
 import FutureRides from "./pages/FutureRides.jsx";
 import AboutPage from "./pages/AboutPage.jsx"; // यह डिटेल्ड About Me पेज है
+import ContactPage from "./pages/ContactPage.jsx"; 
 function App() {
   return (
     <BrowserRouter>
@@ -42,6 +43,7 @@ function App() {
         <Route path="/present-rides" element={<PresentRides />} />
         <Route path="/future-rides" element={<FutureRides />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
        
       </Routes>
 

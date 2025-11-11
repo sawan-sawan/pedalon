@@ -1,0 +1,239 @@
+/* General Wrapper & Global Styles for Dark Theme */
+.contact-wrapper {
+  font-family: 'Poppins', sans-serif; /* Your website font */
+  color: #e0e0e0; /* Light text for dark background */
+  background-color: #121212; /* Dark background color */
+  padding: 80px 20px; /* More padding top/bottom for full page look */
+  max-width: 1400px; /* Thoda aur wide */
+  margin: 0 auto;
+  min-height: calc(100vh - 100px); /* Adjust based on header/footer height */
+  box-sizing: border-box;
+}
+
+/* Header Section */
+.contact-header {
+  text-align: center;
+  margin-bottom: 60px;
+  background-color: #1a1a1a; /* Slightly lighter dark shade for background */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact-header .subtitle {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  color: #007bff; /* Primary blue accent */
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.contact-header h1 {
+  font-size: 3rem; /* Larger, bolder heading */
+  color: #f0f0f0;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+.contact-header p {
+  font-size: 1.1rem;
+  color: #a0a0a0;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+  line-height: 1.6;
+}
+
+.header-social-links {
+  margin-top: 25px;
+}
+.header-social-links a {
+  font-size: 2rem;
+  color: #a0a0a0; /* Lighter grey for icons */
+  margin: 0 15px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+.header-social-links a:hover {
+  color: #007bff; /* Blue on hover */
+  transform: translateY(-3px);
+}
+
+/* Main Content Container (Form + Info/Map) */
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px; /* More space between sections */
+  justify-content: center; /* Center align sections */
+}
+
+/* Form Section */
+.contact-form-section {
+  flex: 1;
+  min-width: 350px; /* Adjust min-width as needed */
+  background-color: #1a1a1a;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+}
+.contact-form-section h2, .contact-details-map-section h2 {
+  font-size: 2rem;
+  color: #f0f0f0;
+  margin-bottom: 30px;
+  font-weight: 600;
+  text-align: center; /* Centered headings */
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #e0e0e0;
+  font-size: 1rem;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #333; /* Darker border */
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #222; /* Dark input background */
+  color: #e0e0e0;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #777;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #007bff; /* Blue focus outline */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3); /* Blue glowing effect */
+}
+.form-group textarea {
+  resize: vertical;
+}
+
+/* Submit Button */
+.submit-btn {
+  background-color: #007bff; /* Primary blue */
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  width: 100%; /* Full width button */
+}
+.submit-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 123, 255, 0.2);
+}
+
+/* Contact Details & Map Section */
+.contact-details-map-section {
+  flex: 1;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Contact Info */
+.contact-info {
+  background-color: #1a1a1a;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+}
+.contact-info h2 {
+    margin-bottom: 30px;
+}
+.info-item {
+  display: flex;
+  align-items: flex-start; /* Align icon to top if text wraps */
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+}
+.info-item .info-icon {
+  font-size: 1.6rem; /* Larger icons */
+  color: #007bff;
+  margin-right: 20px;
+  width: 25px; /* Fixed width for consistent alignment */
+  flex-shrink: 0; /* Prevents icon from shrinking */
+}
+.info-item span {
+    line-height: 1.5;
+}
+
+/* Map Container */
+.map-container {
+  background-color: #1a1a1a;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+}
+
+.map-container h2 {
+    margin-bottom: 30px;
+}
+
+.map-container iframe {
+  border-radius: 8px;
+  filter: grayscale(80%) invert(92%) contrast(83%); /* Dark map styling */
+  margin-bottom: 15px;
+}
+
+.map-note {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center; /* Center items when in column layout */
+    gap: 40px;
+  }
+  .contact-form-section, .contact-details-map-section {
+    width: 90%; /* Make sections take more width on smaller screens */
+    max-width: 600px; /* Limit max width */
+    min-width: unset; /* Remove min-width to allow shrinking */
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-header {
+    padding: 30px 20px;
+  }
+  .contact-header h1 {
+    font-size: 2.2rem;
+  }
+  .contact-header p {
+    font-size: 1rem;
+  }
+  .contact-form-section, .contact-info, .map-container {
+    padding: 30px 20px;
+  }
+  .contact-form-section h2, .contact-details-map-section h2 {
+    font-size: 1.6rem;
+  }
+  .header-social-links a {
+    font-size: 1.6rem;
+    margin: 0 10px;
+  }
+}
