@@ -1,16 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./GetInTouch.css";
-
-// Strava, Insta, YouTube icons
 import { FaStrava, FaInstagram, FaYoutube } from "react-icons/fa";
 
-const GetInTouch = () => { 
+const GetInTouch = () => {
   return (
     <section id="contact" className="cta-section">
-      {/* यह cta-container ही हमारा स्टाइल्ड कार्ड है */}
       <div className="cta-container">
-
-        {/* Flow: Same header style */}
         <h3 className="section-subtitle">GET IN TOUCH</h3>
         <h2 className="section-title">Join the Journey</h2>
 
@@ -19,10 +15,9 @@ const GetInTouch = () => {
           about my rides, gear, or anything in between.
         </p>
 
-        {/* Social Media Links */}
         <div className="cta-social-links">
           <a
-            href="https://www.strava.com/athletes/pedal_on" // <-- अपना लिंक यहाँ डालें
+            href="https://www.strava.com/athletes/pedal_on"
             target="_blank"
             rel="noopener noreferrer"
             className="cta-social-link"
@@ -31,7 +26,7 @@ const GetInTouch = () => {
             <FaStrava />
           </a>
           <a
-            href="" // <-- अपना लिंक यहाँ डालें
+            href="https://instagram.com/pedalon987"
             target="_blank"
             rel="noopener noreferrer"
             className="cta-social-link"
@@ -40,7 +35,7 @@ const GetInTouch = () => {
             <FaInstagram />
           </a>
           <a
-            href="https://youtube.com/@pedalon987?si=YE4D578FZVOZ6vdk" // <-- अपना लिंक यहाँ डालें
+            href="https://youtube.com/@pedalon987?si=YE4D578FZVOZ6vdk"
             target="_blank"
             rel="noopener noreferrer"
             className="cta-social-link"
@@ -50,10 +45,10 @@ const GetInTouch = () => {
           </a>
         </div>
 
-        {/* Primary CTA Button */}
-        <a href="/contact" className="btn-cta-primary">
-          Send Me a Messages
-        </a>
+        {/* 👇 Ye Link reload nahi karega */}
+        <Link to="/contact" className="btn-cta-primary">
+          Send Me a Message
+        </Link>
       </div>
     </section>
   );

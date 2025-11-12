@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './ContactPage.css';
+import { useScrollToTop } from "../hooks/useScrollToTop";
+
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaInstagram, FaStrava, FaYoutube } from 'react-icons/fa'; // Strava aur YouTube icons add kiye
 
 function ContactPage() {
@@ -28,6 +30,8 @@ function ContactPage() {
     });
   };
 
+  useScrollToTop();
+
   return (
     <div className="contact-wrapper">
       <header className="contact-header">
@@ -41,7 +45,7 @@ function ContactPage() {
         </div>
       </header>
 
-      <div className="contact-container">
+      <div id='contact' className="contact-container">
         {/* Contact Form Section */}
         <div className="contact-form-section">
           <h2>Send Me a Message</h2>
