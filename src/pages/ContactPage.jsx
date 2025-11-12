@@ -1,102 +1,102 @@
-import React, { useState } from 'react';
-import './ContactPage.css';
+import React, { useState } from "react";
+import "./ContactPage.css";
 import { useScrollToTop } from "../hooks/useScrollToTop";
-
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaInstagram, FaStrava, FaYoutube } from 'react-icons/fa'; // Strava aur YouTube icons add kiye
+import { FaMapMarkerAlt, FaEnvelope, FaInstagram, FaStrava, FaYoutube } from "react-icons/fa";
+import emailjs from "emailjs-com";
 
 function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [statusMessage, setStatusMessage] = useState("");
+  const [statusType, setStatusType] = useState("");
+
+  useScrollToTop();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Yahan form submit karne ka logic add karein (API call, Formspree, etc.)
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
-    });
-  };
 
-  useScrollToTop();
+    emailjs
+      .send(
+        "service_oaclg8n",
+        "template_z1saw1a",
+        formData,
+        "N7Jsu-MhLNTHW7ocV"
+      )
+      .then(
+        () => {
+          setStatusType("success");
+          setStatusMessage("✅ Message sent successfully! I'll get back to you soon.");
+          setFormData({ name: "", email: "", message: "" });
+
+          setTimeout(() => {
+            setStatusMessage("");
+            setStatusType("");
+          }, 3000);
+        },
+        (error) => {
+          console.error("EmailJS error:", error);
+          setStatusType("error");
+          setStatusMessage("❌ Failed to send message. Please try again later.");
+          setTimeout(() => {
+            setStatusMessage("");
+            setStatusType("");
+          }, 3000);
+        }
+      );
+  };
 
   return (
     <div className="contact-wrapper">
+      {statusMessage && (
+        <div className={`status-popup ${statusType}`}>
+          {statusMessage}
+        </div>
+      )}
+
       <header className="contact-header">
         <p className="subtitle">GET IN TOUCH</p>
         <h1>Join the Journey</h1>
-        <p>Follow my adventures on Strava and Instagram, or send me a message about my rides, gear, or anything in between.</p>
+        <p>
+          Follow my adventures on Strava and Instagram, or send me a message
+          about my rides, gear, or anything in between.
+        </p>
         <div className="header-social-links">
-          <a href="https://strava.com/your-profile" target="_blank" rel="noopener noreferrer"><FaStrava /></a>
-          <a href="https://instagram.com/your-profile" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-          <a href="https://youtube.com/your-channel" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
+          <a href="https://strava.com/athletes/pedal_on" target="_blank" rel="noopener noreferrer"><FaStrava /></a>
+          <a href="https://instagram.com/pedalon987" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+          <a href="https://youtube.com/@pedalon987" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
         </div>
       </header>
 
-      <div id='contact' className="contact-container">
-        {/* Contact Form Section */}
+      <div id="contact" className="contact-container">
         <div className="contact-form-section">
           <h2>Send Me a Message</h2>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Full Name</label>
-              <input 
-                type="text" 
-                id="name" 
-                name="name" 
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Enter your name"
-                required 
-              />
+              <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Enter your name" required />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
-              <input 
-                type="email" 
-                id="email" 
-                name="email" 
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Enter your email"
-                required 
-              />
+              <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} placeholder="Enter your email" required />
             </div>
             <div className="form-group">
               <label htmlFor="message">Your Message</label>
-              <textarea 
-                id="message" 
-                name="message" 
-                rows="6" 
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Type your message here..."
-                required
-              ></textarea>
+              <textarea id="message" name="message" rows="6" value={formData.message} onChange={handleChange} placeholder="Type your message here..." required></textarea>
             </div>
             <button type="submit" className="submit-btn">Send Message</button>
           </form>
         </div>
 
-        {/* Contact Info & Map Section */}
         <div className="contact-details-map-section">
           <div className="contact-info">
             <h2>Contact Details</h2>
             <div className="info-item">
               <FaMapMarkerAlt className="info-icon" />
-              <span>Ramghar,Phillaur, Punjab 144410</span>
+              <span>Ramghar, Phillaur, Punjab 144410</span>
             </div>
             <div className="info-item">
               <FaEnvelope className="info-icon" />
@@ -104,7 +104,6 @@ function ContactPage() {
             </div>
           </div>
 
-          {/* Optional: Google Map */}
           <div className="map-container">
             <h2>Find Us Here</h2>
             <iframe
@@ -117,7 +116,6 @@ function ContactPage() {
               referrerPolicy="no-referrer-when-downgrade"
               title="Pedalon Location"
             ></iframe>
-            <p className="map-note"></p> {/* Example location note */}
           </div>
         </div>
       </div>
