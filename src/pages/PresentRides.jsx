@@ -11,17 +11,17 @@ import {
 
 const liveRideData = {
     isLive: true,
-    title: "Aravalli Hill Climb",
+    title: "Phillaur To Phagwara NH44",
     status: "Currently Riding", // या "Starts at 5:00 AM"
-    date: "Today, 3 Nov 2025",
-    startTime: "5:00 AM IST",
-    distance: 85, // km
+    date: "Today, 26 Nov 2025",
+    startTime: "3:30 PM IST",
+    distance: 50, // km
     elevation: 1200, // meters
-    currentLocation: "Gurugram-Faridabad Road",
+    currentLocation: "GT NH 44 Road",
     description:
-        "Taking on the steep climbs of the Aravalli range. This route is known for its tough gradients and beautiful, rugged terrain. Following the main highway loop.",
+        "best highway, beautiful view like mountains at GT NH 44 Road highway bridge climb.",
     // यह आपके हाइलाइट किए गए रूट की एक तस्वीर होगी
-    mapImage: "/Public/img/img9.png",
+    mapImage: "/Public/img/map.png",
 };
 
 const PresentRides = () => {
@@ -96,7 +96,7 @@ const PresentRides = () => {
                         <p>{liveRideData.description}</p>
                     </div>
 
-                    <a href="#strava" className="btn-trifecta-outline">
+                    <a href="https://www.strava.com/athletes/pedal_on" className="btn-trifecta-outline">
                         Follow on Strava
                     </a>
                 </div>

@@ -66,7 +66,7 @@ function ContactPage() {
         </p>
         <div className="header-social-links">
           <a href="https://strava.com/athletes/pedal_on" target="_blank" rel="noopener noreferrer"><FaStrava /></a>
-          <a href="https://instagram.com/pedalon987" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+          <a href="https://www.instagram.com/pedalon_07?utm_source=ig_web_button_share_sheet&igsh=ZjE2cWFrdGcyZ2d0" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
           <a href="https://youtube.com/@pedalon987" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
         </div>
       </header>
