@@ -41,7 +41,7 @@ const PresentRides = () => {
                 {/* --- कॉलम 1: मैप --- */}
                 <div className="map-panel">
                     <img
-                        src={liveRideData.mapImage}
+                        src="public/img/map.png"
                         alt="Live ride map"
                         className="map-placeholder-img"
                     />
