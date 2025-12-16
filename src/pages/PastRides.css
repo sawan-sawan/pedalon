@@ -276,3 +276,29 @@
     gap: 1rem;
   }
 }
+
+.strava-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #FC6100; /* Strava Orange */
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+
+.strava-button:hover {
+  opacity: 0.9;
+  color: white;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}

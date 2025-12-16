@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./PastRides.css";
-import { FaCalendarAlt, FaRoute, FaMountain, FaTimes } from "react-icons/fa";
+import { FaCalendarAlt, FaRoute, FaMountain, FaTimes, FaExternalLinkAlt } from "react-icons/fa"; // FaExternalLinkAlt add kiya
 import { useScrollToTop } from "../hooks/useScrollToTop";
-// Map libraries
 import { MapContainer, TileLayer, Polyline, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import gpxParser from "gpxparser";
 
-// Helper component: Map ko auto-center karne ke liye
 const ZoomToRoute = ({ route }) => {
   const map = useMap();
   useEffect(() => {
@@ -26,22 +24,42 @@ const DUMMY_RIDES = [
     distance: 37,
     elevation: 155,
     coverImage: "/img/pastimg1.png",
-    gpxFile: "/gpx/phillaur-to-phagwara.gpx", // Public folder mein file rakhein
+    gpxFile: "/gpx/phillaur-to-phagwara.gpx",
+    stravaId: "16571311745", // Strava Activity ID yahan rakhein
+    stravaUrl: "https://www.strava.com/activities/16571311745", // Direct link ke liye
     description: "An exhilarating ride along the NH44 highway...",
     gallery: ["/img/pastimg1.png"],
+    category: "Highway"
   },
 ];
 
-const RIDES_PER_PAGE = 6;
-
 const PastRides = () => {
-  const [visibleRides, setVisibleRides] = useState(DUMMY_RIDES.slice(0, RIDES_PER_PAGE));
   const [selectedRide, setSelectedRide] = useState(null);
-  const [routeData, setRouteData] = useState([]); // Map coordinates ke liye state
+  const [routeData, setRouteData] = useState([]);
+  const [activeFilter, setActiveFilter] = useState("All");
 
   useScrollToTop();
 
-  // GPX Load karne ka logic jab modal khule
+  // Strava Script load karne ke liye useEffect
+  useEffect(() => {
+    if (selectedRide) {
+      const script = document.createElement("script");
+      script.src = "https://strava-embeds.com/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+
+      return () => {
+        document.body.removeChild(script); // Cleanup jab modal band ho
+      };
+    }
+  }, [selectedRide]);
+
+  const filteredRides = useMemo(() => {
+    if (activeFilter === "All") return DUMMY_RIDES;
+    if (activeFilter === "Tours") return DUMMY_RIDES.filter(ride => ride.category === "Tours");
+    return DUMMY_RIDES.filter(ride => ride.date.includes(activeFilter));
+  }, [activeFilter]);
+
   useEffect(() => {
     if (selectedRide && selectedRide.gpxFile) {
       fetch(selectedRide.gpxFile)
@@ -54,7 +72,7 @@ const PastRides = () => {
         })
         .catch((err) => console.error("Error loading GPX:", err));
     } else {
-      setRouteData([]); // Modal band hone par clear karein
+      setRouteData([]);
     }
   }, [selectedRide]);
 
@@ -64,10 +82,25 @@ const PastRides = () => {
   return (
     <>
       <section className="past-rides-section">
-        {/* ... Header and Filters (Aapka existing code) ... */}
+        <div className="section-header">
+          <h3 className="section-subtitle">THE CORE JOURNEY</h3>
+          <h2 className="section-title">The Archives</h2>
+        </div>
+
+        <div className="filter-bar">
+          {["All", "2025", "2024", "Tours"].map((filter) => (
+            <button 
+              key={filter}
+              className={`filter-btn ${activeFilter === filter ? "active" : ""}`}
+              onClick={() => setActiveFilter(filter)}
+            >
+              {filter}
+            </button>
+          ))}
+        </div>
         
         <div className="rides-grid-container">
-          {visibleRides.map((ride) => (
+          {filteredRides.map((ride) => (
             <div className="ride-card" key={ride.id} onClick={() => openModal(ride)}>
               <img src={ride.coverImage} alt={ride.title} className="ride-card-img" />
               <div className="ride-card-content">
@@ -83,7 +116,7 @@ const PastRides = () => {
         </div>
       </section>
 
-      {/* --- Modal with GPX Map --- */}
+      {/* --- Modal --- */}
       {selectedRide && (
         <div className="modal-backdrop" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -104,7 +137,18 @@ const PastRides = () => {
 
             <div className="modal-header">
               <h2 className="modal-title">{selectedRide.title}</h2>
-              <span className="modal-date"><FaCalendarAlt /> {selectedRide.date}</span>
+              <div className="modal-actions">
+                  <span className="modal-date"><FaCalendarAlt /> {selectedRide.date}</span>
+                  {/* Strava Direct Button */}
+                  <a 
+                    href={selectedRide.stravaUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="strava-button"
+                  >
+                    View on Strava <FaExternalLinkAlt />
+                  </a>
+              </div>
             </div>
 
             <div className="modal-stats">
@@ -114,6 +158,17 @@ const PastRides = () => {
 
             <div className="modal-body">
               <p>{selectedRide.description}</p>
+              
+              {/* Strava Embed Widget */}
+              <div className="strava-embed-wrapper" style={{ marginTop: "20px" }}>
+                <div 
+                  className="strava-embed-placeholder" 
+                  data-embed-type="activity" 
+                  data-embed-id={selectedRide.stravaId} 
+                  data-style="standard"
+                  data-from-embed="false"
+                ></div>
+              </div>
             </div>
           </div>
         </div>
