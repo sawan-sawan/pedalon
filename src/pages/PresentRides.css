@@ -202,3 +202,38 @@
      border-radius: 0 0 12px 12px;
   }
 }
+.offline-ride-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background: rgba(255, 255, 255, 0.05); /* Soft background */
+    border-radius: 20px;
+    text-align: center;
+    border: 1px dashed #666;
+}
+
+.offline-card h2 {
+    font-size: 2rem;
+    margin: 20px 0 10px;
+    color: #fff;
+}
+
+.offline-card p {
+    color: #aaa;
+    max-width: 500px;
+    margin: 0 auto 30px;
+}
+
+.offline-icon {
+    font-size: 4rem;
+    color: #FC6100; /* Strava Orange or your brand color */
+    opacity: 0.6;
+}
+
+.next-hint {
+    font-style: italic;
+    color: #FC6100;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
