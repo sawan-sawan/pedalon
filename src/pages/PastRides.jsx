@@ -19,19 +19,34 @@ const ZoomToRoute = ({ route }) => {
 const DUMMY_RIDES = [
   {
     id: 1,
-    title: "The Great NH44 Highway Ride Phillaur to Phagwara",
-    date: "26 November 2025",
-    distance: 37,
-    elevation: 155,
+    title: "NH44 Highway Ride – Phillaur to Phagwara",
+    date: "2025-11-26", // ISO format (better for sorting)
+    distance: 37, // in km
+    elevation: 155, // in meters
     coverImage: "/img/pastimg1.png",
     gpxFile: "/gpx/phillaur-to-phagwara.gpx",
-    stravaId: "16571311745", // Strava Activity ID yahan rakhein
-    stravaUrl: "https://www.strava.com/activities/16571311745", // Direct link ke liye
-    description: "An exhilarating ride along the NH44 highway...",
+    stravaId: "16571311745",
+    stravaUrl: "https://www.strava.com/activities/16571311745",
+    description: "An exhilarating 37km highway ride from Phillaur to Phagwara along NH44 with smooth roads and moderate elevation gain.",
     gallery: ["/img/pastimg1.png"],
-    category: "Highway"
+    category: "Highway Ride"
   },
+  {
+    id: 2,
+    title: "Morning NH44 Sprint Phillaur to Main Hambran Rd",
+    date: "2026-01-18",
+    distance: 25,
+    elevation: 88,
+    coverImage: "/img/pastimg2.png",
+    gpxFile: "/gpx/philluar-to-firozpurroad.gpx", // changed file name (better structure)
+    stravaId: "17091765164",
+    stravaUrl: "https://www.strava.com/activities/17091765164",
+    description: "A short and fast 25km morning sprint ride on NH44 featuring flat stretches and light elevation gain.",
+    gallery: ["/img/pastimg2.png"],
+    category: "Highway Ride"
+  }
 ];
+
 
 const PastRides = () => {
   const [selectedRide, setSelectedRide] = useState(null);
@@ -89,7 +104,7 @@ const PastRides = () => {
 
         <div className="filter-bar">
           {["All", "2025", "2024", "Tours"].map((filter) => (
-            <button 
+            <button
               key={filter}
               className={`filter-btn ${activeFilter === filter ? "active" : ""}`}
               onClick={() => setActiveFilter(filter)}
@@ -98,7 +113,7 @@ const PastRides = () => {
             </button>
           ))}
         </div>
-        
+
         <div className="rides-grid-container">
           {filteredRides.map((ride) => (
             <div className="ride-card" key={ride.id} onClick={() => openModal(ride)}>
@@ -138,16 +153,16 @@ const PastRides = () => {
             <div className="modal-header">
               <h2 className="modal-title">{selectedRide.title}</h2>
               <div className="modal-actions">
-                  <span className="modal-date"><FaCalendarAlt /> {selectedRide.date}</span>
-                  {/* Strava Direct Button */}
-                  <a 
-                    href={selectedRide.stravaUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="strava-button"
-                  >
-                    View on Strava <FaExternalLinkAlt />
-                  </a>
+                <span className="modal-date"><FaCalendarAlt /> {selectedRide.date}</span>
+                {/* Strava Direct Button */}
+                <a
+                  href={selectedRide.stravaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="strava-button"
+                >
+                  View on Strava <FaExternalLinkAlt />
+                </a>
               </div>
             </div>
 
@@ -158,13 +173,18 @@ const PastRides = () => {
 
             <div className="modal-body">
               <p>{selectedRide.description}</p>
-              
+              {/* Gallery Section */}
+              <div className="gallery-container">
+                {selectedRide.gallery.map((img, index) => (
+                  <img key={index} src={img} alt="Ride" />
+                ))}
+              </div>
               {/* Strava Embed Widget */}
               <div className="strava-embed-wrapper" style={{ marginTop: "20px" }}>
-                <div 
-                  className="strava-embed-placeholder" 
-                  data-embed-type="activity" 
-                  data-embed-id={selectedRide.stravaId} 
+                <div
+                  className="strava-embed-placeholder"
+                  data-embed-type="activity"
+                  data-embed-id={selectedRide.stravaId}
                   data-style="standard"
                   data-from-embed="false"
                 ></div>

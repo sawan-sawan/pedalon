@@ -302,3 +302,24 @@
   align-items: center;
   margin-top: 10px;
 }
+.gallery-container {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  margin-top: 20px;
+  padding-bottom: 10px;
+}
+
+.gallery-container img {
+  flex: 0 0 auto;
+  width: 250px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.gallery-container::-webkit-scrollbar {
+  height: 6px;
+}
